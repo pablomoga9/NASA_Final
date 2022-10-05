@@ -66,11 +66,10 @@ const NavContainer = styled.nav`
     margin:auto;
   }
   padding: .4rem;
-  background-color: RGBA(0,0,0,0.29);
+  background-image: linear-gradient(to bottom, #070024 55%, rgba(0, 0, 0, 0) 100%);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-image: linear-gradient(to bottom, #348c22, #00864f, #007d6d, #00727b, #1e6578);
   a{
     color: white;
     text-decoration: none;

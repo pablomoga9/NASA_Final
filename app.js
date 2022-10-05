@@ -5,7 +5,7 @@ require('./utils/dbMongo.js');
 const landingsRouter = require('./routes/landingsRoutes.js')
 const neasRouter = require('./routes/neasRoutes.js');
 const usersRouter = require('./routes/usersRoutes.js')
-
+var cors = require('cors');
 //Middlewares
 const middle404 = require('./middlewares/error404')
 
@@ -14,6 +14,7 @@ const app = express();
 const port = 3000;
 
 app.use(express.json())
+app.use(cors());
 
 //APIs
 app.use('/api/', landingsRouter);
