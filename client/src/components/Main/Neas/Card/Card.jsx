@@ -27,13 +27,13 @@ const Card = ()=>{
 
   function handleAscendingPeriod(){
     const endOffset = itemOffset + itemsPerPage;
-    const sortPeriod = (data.sort((a,b)=> {return a.period_yr-b.period_yr}))
+    const sortPeriod = (data.sort((a,b)=> {return new Date(a.discovery_date)-new Date(b.discovery_date)}))
     setCurrentItems(sortPeriod.slice(itemOffset, endOffset));
     
   }
   function handleDescendingPeriod (){
     const endOffset = itemOffset + itemsPerPage;
-    const sortPeriod = (data.sort((a,b)=>{return b.period_yr-a.period_yr}))
+    const sortPeriod = (data.sort((a,b)=>{return new Date(b.discovery_date) - new Date(a.discovery_date)}))
     setCurrentItems(sortPeriod.slice(itemOffset, endOffset));
     }
   

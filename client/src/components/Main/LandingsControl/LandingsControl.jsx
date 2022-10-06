@@ -1,6 +1,7 @@
 import React, { useEffect,useState,useContext } from "react";
 import axios from "axios";
-import { landingsContext } from "../../../../context/landingsContext";
+import { landingsContext } from "../../../context/landingsContext";
+import LandingCard from './LandingCard/LandingCard';
 
 const LandingsControl = ()=>{
   const {landingsData,setLandingsData} = useContext(landingsContext);
@@ -21,9 +22,12 @@ const LandingsControl = ()=>{
     getLandings();
   },[landingsData])
 
-
+  
   return(
     <>
+    {landingsData?landingsData.map((landing,i)=>{
+        return <LandingCard key={i} data={landing}/>
+    }):null}
     </>
   )
 }

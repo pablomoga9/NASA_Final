@@ -3,7 +3,7 @@ import {Route,Routes} from 'react-router-dom';
 import Home from './Home/Home';
 import Neas from './Neas/Neas';
 import Landings from './Landings/Landings';
-import LandingsControl from "./Landings/LandingsControl/LandingsControl";
+import LandingsControl from "./LandingsControl/LandingsControl";
 
 const Main = ()=>{
   return <main>
