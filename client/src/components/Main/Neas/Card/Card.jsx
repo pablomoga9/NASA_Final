@@ -4,7 +4,7 @@ import uuid4 from "uuid4";
 import ReactPaginate from 'react-paginate';
 
 const Card = ()=>{
-  const {data} = useContext(neasContext);
+  const {data,setData} = useContext(neasContext);
   const itemsPerPage = 10;
   const [currentItems, setCurrentItems] = useState([]);
   const [pageCount, setPageCount] = useState(0);
@@ -21,11 +21,22 @@ const Card = ()=>{
   
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % data.length;
-    console.log(
-      `User requested page number ${event.selected}, which is offset ${newOffset}`
-    );
     setItemOffset(newOffset);
   };
+
+
+  function handleAscendingPeriod(){
+    const endOffset = itemOffset + itemsPerPage;
+    const sortPeriod = (data.sort((a,b)=> {return a.period_yr-b.period_yr}))
+    setCurrentItems(sortPeriod.slice(itemOffset, endOffset));
+    
+  }
+  function handleDescendingPeriod (){
+    const endOffset = itemOffset + itemsPerPage;
+    const sortPeriod = (data.sort((a,b)=>{return b.period_yr-a.period_yr}))
+    setCurrentItems(sortPeriod.slice(itemOffset, endOffset));
+    }
+  
 
 
 
@@ -44,19 +55,20 @@ const Card = ()=>{
     nextLinkClassName="page-num"
     activateLinkClassName="active"
   />
-    
+    <div className="sortFilters">
+      <div className="sortPeriod">
+        <p>Ordenar por Periodo: </p>
+        <button onClick={handleAscendingPeriod} className="sortAscending">🢁</button>
+        <button onClick={handleDescendingPeriod} className="sortPeriodDescending">🢃</button>
+      </div>
+     
+    </div>
     {currentItems.map(item=>(
       <div key={uuid4()} className="neasCard">
         <h3>{item.designation}</h3>
-        <p>{item.discovery_date}</p>
-        <p>{item.h_mag}</p>
-        <p>{item.moid_au}</p>
-        <p>{item.q_au_1}</p>
-        <p>{item.q_au_2}</p>
-        <p>{item.period_yr}</p>
-        <p>{item.i_deg}</p>
-        <p>{item.pha}</p>
-        <p>{item.orbit_class}</p>
+        <p>Fecha descubrimiento: {item.discovery_date}</p>
+        <p>Periodo del año: {item.period_yr}</p>
+        <p>Clase orbital: {item.orbit_class}</p>
       </div>
     ))}
    

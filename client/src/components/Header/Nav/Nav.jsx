@@ -27,8 +27,9 @@ function Nav(){
         </div>
         <div className={`links ${clicked ? 'active' : ''}`}>
           <Link onClick={handleClick} to="/">Home</Link>
-          <Link onClick={handleClick} to="/new">Asteroides</Link>
-          <Link onClick={handleClick} to="search">NEAs</Link>
+          <Link onClick={handleClick} to="/landings">Asteroides</Link>
+          <Link onClick={handleClick} to="/neas">NEAs</Link>
+          <Link onClick={handleClick} to="/landings/list">Landings List</Link>
           
         </div>
       
