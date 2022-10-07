@@ -2,7 +2,7 @@
 const mongoose = require("mongoose");
 require('dotenv').config();
 
-const dbUrl = `mongodb+srv://moyagarcia99:viEMKRDWewMrNcnL@nasa.g5qnyno.mongodb.net/NasaApi?retryWrites=true&w=majority`
+const dbUrl = `mongodb+srv://moyagarcia99:${process.env.db_Password}@nasa.g5qnyno.mongodb.net/NasaApi?retryWrites=true&w=majority`
 console.log(process.env.db_User);
 
 const connectionParams = {

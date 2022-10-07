@@ -2,6 +2,7 @@ import React, { useContext,useState,useEffect} from "react";
 import { neasContext } from "../../../../context/neasContext";
 import uuid4 from "uuid4";
 import ReactPaginate from 'react-paginate';
+import axios from "axios";
 
 const Card = ()=>{
   const {data,setData} = useContext(neasContext);
@@ -36,6 +37,16 @@ const Card = ()=>{
     const sortPeriod = (data.sort((a,b)=>{return new Date(b.discovery_date) - new Date(a.discovery_date)}))
     setCurrentItems(sortPeriod.slice(itemOffset, endOffset));
     }
+
+    const deleteNea = async(word)=>{
+      try{  
+        console.log("word");
+        // const res = await axios.delete(`http://localhost:3000/api/astronomy/neas/delete/${}`)
+      }
+      catch(error){
+        console.log(error);
+      }
+    }
   
 
 
@@ -69,6 +80,7 @@ const Card = ()=>{
         <p>Fecha descubrimiento: {item.discovery_date}</p>
         <p>Periodo del año: {item.period_yr}</p>
         <p>Clase orbital: {item.orbit_class}</p>
+        <button onClick={deleteNea}>Delete</button>
       </div>
     ))}
    

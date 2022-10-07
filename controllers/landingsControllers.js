@@ -97,7 +97,7 @@ const updateLanding = async(req,res)=>{
 
 const deleteLanding = async(req,res)=>{
     try{
-        const deleteLandings = await landing.deleteLanding(req.body);
+        const deleteLandings = await landing.deleteLanding(req.params.id);
         res.status(200).json(deleteLandings);
     }
     catch(error){

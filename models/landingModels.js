@@ -106,10 +106,10 @@ const updateLanding = async(body)=>{
     }
 }
 
-const deleteLanding = async(body)=>{
+const deleteLanding = async(landing)=>{
     try{
-        const deletedLanding = await landingSchema.deleteOne({id:body.id});
-        return deletedLanding;
+        console.log(typeof landing)
+        await landingSchema.deleteOne({id:landing});
     }
     catch(error){
         console.log(error);

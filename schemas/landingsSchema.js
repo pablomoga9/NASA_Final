@@ -4,7 +4,7 @@ const schema = new mongoose.Schema({
         type: String,
     },
     id:{
-        type: Number,
+        type: String,
         unique: true
     },
     nametype:{
@@ -14,7 +14,7 @@ const schema = new mongoose.Schema({
         type: String
     },
     mass:{
-        type: Number
+        type: String
     },
     fall:{
         type: String
