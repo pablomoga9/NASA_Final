@@ -2,7 +2,7 @@ import React, { useEffect,useState,useContext } from "react";
 import axios from "axios";
 import { landingsContext } from "../../../context/landingsContext";
 import LandingCard from './LandingCard/LandingCard';
-
+import CreateLanding from './CreateLanding/CreateLanding';
 
 const LandingsControl = ()=>{
   const {landingsData,setLandingsData} = useContext(landingsContext);
@@ -15,7 +15,7 @@ const LandingsControl = ()=>{
       try{
         if(landingsData.length===0){
           const res = await axios.get('http://localhost:3000/api/astronomy/landings');
-          setLandingsData(()=>res.data);
+          setLandingsData(res.data);
         }
        
         console.log(landingsData);
@@ -90,7 +90,8 @@ const LandingsControl = ()=>{
         return <LandingCard key={i} data={landing} delete={handleDelete(i)}/>
     })} */}
       <div>
-        
+        <CreateLanding/>
+        <LandingCard/>
       </div>
     </>
   )
