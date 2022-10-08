@@ -2,8 +2,7 @@ import React, { useEffect,useState,useContext } from "react";
 import axios from "axios";
 import { landingsContext } from "../../../context/landingsContext";
 import LandingCard from './LandingCard/LandingCard';
-import ReactPaginate from 'react-paginate';
-import useDebounce from "../../../hooks/useDebounce";
+
 
 const LandingsControl = ()=>{
   const {landingsData,setLandingsData} = useContext(landingsContext);
@@ -27,50 +26,45 @@ const LandingsControl = ()=>{
     }
     getLandings();
 
-  },[])
+  },[landingsData])
 
-  // const debounce = useDebounce();
-  const handleChange=(e)=>{
-    const inputValue = e.target.name.value;
-    setName(inputValue);
-    // debounce(()=>e.target.name.value="");
-  }
+ 
   
 
 
-  function handleAscendingDate(){
-    const sortDate = (landingsData.sort((a,b)=> {return new Date(a.year)-new Date(b.year)}))
-    setLandingsData(sortDate)
-    console.log(sortDate);
-    }
-  function handleDescendingDate (){
-    const sortDate = (landingsData.sort((a,b)=>{return new Date(b.year) - new Date(a.year)}))
-    setLandingsData(sortDate)
-    console.log(sortDate);
-    }
+  // function handleAscendingDate(){
+  //   const sortDate = (landingsData.sort((a,b)=> {return new Date(a.year)-new Date(b.year)}))
+  //   setLandingsData(sortDate)
+  //   console.log(sortDate);
+  //   }
+  // function handleDescendingDate (){
+  //   const sortDate = (landingsData.sort((a,b)=>{return new Date(b.year) - new Date(a.year)}))
+  //   setLandingsData(sortDate)
+  //   console.log(sortDate);
+  //   }
 
-    function handleAscendingMass(){
-      const sortMass = (landingsData.sort((a,b)=>a.mass - b.mass))
-      return setLandingsData(sortMass)
-      console.log(sortMass);
-    }
-    function handleDescendingMass(){
-      const sortMass = (landingsData.sort((a,b)=>b.mass - a.mass))
-      setLandingsData(sortMass);
-      console.log(sortMass);
-    }
+  //   function handleAscendingMass(){
+  //     const sortMass = (landingsData.sort((a,b)=>a.mass - b.mass))
+  //     return setLandingsData(sortMass)
+  //     console.log(sortMass);
+  //   }
+  //   function handleDescendingMass(){
+  //     const sortMass = (landingsData.sort((a,b)=>b.mass - a.mass))
+  //     setLandingsData(sortMass);
+  //     console.log(sortMass);
+  //   }
 
 
-  function handleDelete(i){
-    console.log("hola")
-    const leftLandings = landingsData.filter((item,j)=>i!==j);
-    return setLandingsData(leftLandings)
-  }
+  // function handleDelete(i){
+  //   console.log("hola")
+  //   const leftLandings = landingsData.filter((item,j)=>i!==j);
+  //   return setLandingsData(leftLandings)
+  // }
 
   
   return(
     <>
-  <div className="searchByName">
+  {/* <div className="searchByName">
     
       <label htmlFor="">Escribe un nombre:</label>
       <input name="name" type="text" className="searchName" onChange={handleChange} />
@@ -94,7 +88,10 @@ const LandingsControl = ()=>{
 
     {landingsData.map((landing,i)=>{
         return <LandingCard key={i} data={landing} delete={handleDelete(i)}/>
-    })}
+    })} */}
+      <div>
+        
+      </div>
     </>
   )
 }

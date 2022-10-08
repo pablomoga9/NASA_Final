@@ -4,6 +4,7 @@ import Home from './Home/Home';
 import Neas from './Neas/Neas';
 import Landings from './Landings/Landings';
 import LandingsControl from "./LandingsControl/LandingsControl";
+import NeasDetail from './NeasDetail/NeasDetail';
 
 const Main = ()=>{
   return <main>
@@ -12,6 +13,7 @@ const Main = ()=>{
       <Route element={<Neas/>} path={"/neas"}/>
       <Route element={<Landings/>} path={"/landings"}/>
       <Route element={<LandingsControl/>} path={"/landings/list"}/>
+      <Route element={<NeasDetail/>} path={"/neas/detail/:designation"}/>
     </Routes>
     </main>
 }

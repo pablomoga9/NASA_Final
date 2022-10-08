@@ -63,6 +63,18 @@ const getNeas = async(req,res)=>{
     }
 }
 
+const getNeaByDesignation = async(req,res)=>{
+    try{
+        console.log("there")
+        let neasDesignation = await neas.getNeaByDesignation(req.params.designation);
+        res.status(200).json(neasDesignation);
+    }
+    catch(error){
+        console.log(error);
+        res.status(404).json({"message":"neas not found"});
+    }
+}
+
 const createNea = async(req,res)=>{
     try{
         console.log(req.body);
@@ -102,5 +114,6 @@ module.exports = {
     getNeas,
     createNea,
     deleteNea,
-    updateNea
+    updateNea,
+    getNeaByDesignation
 }

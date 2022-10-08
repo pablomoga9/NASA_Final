@@ -112,6 +112,17 @@ const updateNeas = async(body)=>{
     }
 }
 
+const getNeaByDesignation = async(desig)=>{
+    try{
+        
+        const getByDesignation = await neasSchema.find({designation:desig}, "-_id");
+        return getByDesignation;
+    }
+    catch(error){
+        console.log(error);
+    }
+}
+
 module.exports = {
     getNeasByClass,
     getAllNeas,
@@ -119,5 +130,6 @@ module.exports = {
     createNea,
     deleteNeas,
     updateNeas,
-    getNeasByDate
+    getNeasByDate,
+    getNeaByDesignation
 }

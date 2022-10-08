@@ -4,6 +4,7 @@ import uuid4 from "uuid4";
 import ReactPaginate from 'react-paginate';
 import axios from "axios";
 import EditCard from './EditCard/EditCard';
+import {Link} from "react-router-dom";
 
 const Card = ()=>{
   const {data,setData} = useContext(neasContext);
@@ -69,7 +70,7 @@ const Card = ()=>{
     </div>
     {currentItems.map((item,i)=>(
       <div key={uuid4()} className="neasCard" >
-        <h3>{item.designation}</h3>
+       <Link to={`/neas/detail/${item.designation}`}><h3>{item.designation}</h3></Link>
         <p>Fecha descubrimiento: {item.discovery_date}</p>
         <p>Periodo del año: {item.period_yr}</p>
         <p>Clase orbital: {item.orbit_class}</p>
