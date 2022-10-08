@@ -65,6 +65,7 @@ const getNeas = async(req,res)=>{
 
 const createNea = async(req,res)=>{
     try{
+        console.log(req.body);
         let create = await neas.createNea(req.body);
         res.status(200).json(create);
     }
@@ -76,7 +77,7 @@ const createNea = async(req,res)=>{
 
 const deleteNea = async(req,res)=>{
     try{
-        let deleteNeas = await neas.deleteNeas(req.body);
+        let deleteNeas = await neas.deleteNeas(req.params.designation);
         res.status(200).json(deleteNeas)
         console.log("Nea deleted");
     }

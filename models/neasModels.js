@@ -77,9 +77,9 @@ const createNea = async(body)=>{
 }
 
 
-const deleteNeas = async(body)=>{
+const deleteNeas = async(neaDesignation)=>{
     try{
-        let deleted = await neasSchema.deleteOne({designation: body.designation});
+        let deleted = await neasSchema.deleteOne({designation: neaDesignation});
         return `Nea ${body.designation} deleted`
     }
     catch(error){

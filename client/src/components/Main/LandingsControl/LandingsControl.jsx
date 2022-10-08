@@ -62,6 +62,7 @@ const LandingsControl = ()=>{
 
 
   function handleDelete(i){
+    console.log("hola")
     const leftLandings = landingsData.filter((item,j)=>i!==j);
     return setLandingsData(leftLandings)
   }

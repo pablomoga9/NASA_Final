@@ -3,6 +3,7 @@ import React,{useEffect,useContext} from "react";
 import axios from "axios";
 import {neasContext} from '../../../context/neasContext';
 import Card from './Card/Card';
+import CreateNea from "./CreateNea/CreateNea";
 
 const Neas = ()=>{
   const {data,setData} = useContext(neasContext);
@@ -30,7 +31,7 @@ const Neas = ()=>{
 
   return(
     <div>
-     
+        <CreateNea/>
         <Card/>
      
     </div>

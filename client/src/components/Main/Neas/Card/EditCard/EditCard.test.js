@@ -1,10 +1,10 @@
 import React from "react";
 import { shallow } from "enzyme";
-import NeasControl from "./NeasControl";
+import EditCard from "./EditCard";
 
-describe("NeasControl", () => {
+describe("EditCard", () => {
   test("matches snapshot", () => {
-    const wrapper = shallow(<NeasControl />);
+    const wrapper = shallow(<EditCard />);
     expect(wrapper).toMatchSnapshot();
   });
 });
