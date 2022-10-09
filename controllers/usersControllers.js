@@ -36,6 +36,15 @@ const checkUser = async(req,res)=>{
     }
 }
 
+ const logoutUser = async(req,res)=>{
+    try{
+        return res.clearCookie("token").redirect('/login');
+    }
+    catch(error){
+        res.status(400).json({msg:"could not logout"})
+    }
+ }
+
 const loginUser = async(req,res)=>{
     try{
         let data = await user.getUserByEmail(req.body.email);
@@ -128,5 +137,6 @@ module.exports = {
     updateUser,
     deleteUser,
     loginUser,
-    checkUser
+    checkUser,
+    logoutUser
 };

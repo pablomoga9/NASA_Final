@@ -23,12 +23,13 @@ const Login = ()=>{
       const seeUser = await axios.get('http://localhost:3000/api/astronomy/users/checkuser',{withCredentials:true});
       console.log(seeUser.data);
       const userToken = seeUser.data.msg.substr(6,seeUser.data.msg.length);
-      console.log(userToken)
-      const user = jwt(userToken);
-      console.log(user); 
+      
+      const user = await jwt(userToken);
+      setUserLogged(user.nickname);
+      navigate('/')
     }
     catch(error){
-
+      console.log(error);
     }
   }
 

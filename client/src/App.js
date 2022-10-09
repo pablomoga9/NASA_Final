@@ -16,12 +16,12 @@ import '../src/styles/styles.scss';
 const App = () =>{
   const [data,setData] = useState([]);
   const [landingsData,setLandingsData] = useState([]);
-  const [userLogged,setUsserLogged] = useState("");
+  const [userLogged,setUserLogged] = useState("");
 
   return (
     <div className="App">
       <BrowserRouter>
-      <userContext.Provider value={{userLogged,setUsserLogged}}>
+      <userContext.Provider value={{userLogged,setUserLogged}}>
       <neasContext.Provider value={{data,setData}}>
         <landingsContext.Provider value={{landingsData,setLandingsData}}>
         <Header/>
