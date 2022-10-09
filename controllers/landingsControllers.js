@@ -1,7 +1,7 @@
 const landing = require('../models/landingModels');
 
 const getLandings = async(req,res)=>{
-    if(req.query.mass_start){
+    if(req.query.mass){
         try{
             const getMass = await landing.getLandingsByMassStart(req.query.mass_start);
             res.status(200).json(getMass);
@@ -64,8 +64,8 @@ const getLandingsByClass = async(req,res)=>{
 }
 const getLandingsByMass = async(req,res)=>{
     try{
-        const getMass = await landing.getLandingsByMass(req.params.mass);
-        res.status(200).json(getMass);
+        const getMass = await landing.getLandingsByMassStart(req.params.mass);
+            res.status(200).json(getMass);
     }
     catch(error){
         console.log(error.stack);

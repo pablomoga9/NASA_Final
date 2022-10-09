@@ -1,11 +1,20 @@
 const user = require('../models/userModels');
-
+const saltRounds = 10;
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
 const createUser = async(req,res)=>{
-    console.log("fewfwe")
     try{
+        const hashPassword = bcrypt.hashSync(req.body.password,saltRounds);
+        const newBody = {
+            nickname:req.body.nickname,
+            password:hashPassword,
+            email:req.body.email,
+            picture:'',
+            neasDiscovered:[]
+        }
         
-        let newUser = await user.createUsers(req.body,res);
+        let newUser = await user.createUsers(newBody);
         res.status(200).json(newUser);
     }
     catch(error){

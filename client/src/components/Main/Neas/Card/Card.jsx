@@ -40,7 +40,10 @@ const Card = ()=>{
     setCurrentItems(sortPeriod.slice(itemOffset, endOffset));
     }
 
-   
+   const deleteNea = (i) =>{
+    const remainingNeas = data.filter((item,j)=>i!==j)
+    setData(remainingNeas);
+   }
   
 
 
@@ -74,7 +77,7 @@ const Card = ()=>{
         <p>Fecha descubrimiento: {item.discovery_date}</p>
         <p>Periodo del año: {item.period_yr}</p>
         <p>Clase orbital: {item.orbit_class}</p>
-        <EditCard key={i} data={item} />
+        <EditCard key={i} data={item} remove={()=>deleteNea(i)}/>
       </div>
     ))}
    

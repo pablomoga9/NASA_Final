@@ -1,15 +1,19 @@
-import React, { useState} from "react";
+import React, { useContext, useState} from "react";
 import {Link} from 'react-router-dom';
 import styled from "styled-components";
-import BurguerButton from '../BurguerButton/BurguerButton'
+import BurguerButton from '../BurguerButton/BurguerButton';
+import {userContext} from '../../../context/userContext';
 
 function Nav(){
-  const [clicked, setClicked] = useState(false)
+  const [clicked, setClicked] = useState(false);
+  const {userLogged,setUserLogged} = useContext(userContext);
   const handleClick = () => {
     setClicked(!clicked)
   }
 
-
+function handleLogout(){
+  setUserLogged("");
+}
 
   // return(
   //   <nav className="nav-bar">
@@ -30,7 +34,10 @@ function Nav(){
           <Link onClick={handleClick} to="/landings">Asteroides</Link>
           <Link onClick={handleClick} to="/neas">NEAs</Link>
           <Link onClick={handleClick} to="/landings/list">Landings List</Link>
-          
+          {userLogged===""?<div>
+          <Link onClick={handleClick} to="/login">Login</Link>
+          <Link onClick={handleClick} to="/signUp">Registro</Link>
+          </div>:<Link onClick={handleLogout}>Logout</Link>}
         </div>
       
         <BgDiv className={`initial ${clicked ? ' active' : ''}`}></BgDiv>

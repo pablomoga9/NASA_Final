@@ -10,6 +10,7 @@ const EditCard = (props)=>{
   const deleteNea = async()=>{
     try{
       const res = await axios.delete(`http://localhost:3000/api/astronomy/neas/delete/${neas.designation}`);
+      props.remove();
     }
     catch(error){
       console.log(error);

@@ -1,12 +1,13 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect,useState } from "react";
 import { landingsContext } from "../../../context/landingsContext";
 import axios from "axios";
-import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
 const Landings = () => {
   const { landingsData, setLandingsData } = useContext(landingsContext);
+  const [massFilter,setMassFilter] = useState([])
   const landingIcon = new L.Icon({
     iconUrl: require('../../../assets/marker2.png'),
     iconAnchor: null,
@@ -21,7 +22,7 @@ const Landings = () => {
   useEffect(() => {
     const getLandings = async () => {
       try {
-        if (landingsData.length == 0) {
+        if (landingsData.length === 0 && massFilter.length === 0) {
           const res = await axios.get('http://localhost:3000/api/astronomy/landings');
           await setLandingsData(res.data);
 
@@ -32,10 +33,20 @@ const Landings = () => {
       }
     }
     getLandings();
-  }, [landingsData]);
+  }, []);
 
-  const getLandingsByMass = ()=>{
-
+  const getLandingsByMass = async(e)=>{
+      try{
+        e.preventDefault();
+        const mass=e.target.mass.value;
+        
+        const res = await axios.get(`http://localhost:3000/api/astronomy/landings/${mass}`);
+        setMassFilter(res.data);
+        
+      }
+      catch(error){
+        console.log(error);
+      }
   }
 
   return (
@@ -46,7 +57,18 @@ const Landings = () => {
           url="https://api.mapbox.com/styles/v1/mogar99/cl8w4411n000j15prntrktrgw/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibW9nYXI5OSIsImEiOiJja2Z3ZDJoaGQxOXFqMzN0OHBhajdjMXBxIn0.1-1aPslRK9n1m1QAS20q3g"
         />
 
-        {landingsData.map((landing,i) => 
+        {massFilter.length!==0?massFilter.map((landing,i) => 
+          landing.geolocation && landing.reclat && landing.reclong?(
+            <Marker position={[String(landing.reclat), String(landing.reclong)]} key={i} icon={landingIcon}>
+            <Popup>
+              <ul>
+                <li><h3>{landing.name}</h3></li>
+                <li><p>id: {landing.id}</p></li>
+                <li> <p>mass: {landing.mass}</p></li>
+                <li> <p>year: {landing.year}</p></li>
+              </ul>
+            </Popup>
+          </Marker>):null):landingsData.map((landing,i) => 
           landing.geolocation && landing.reclat && landing.reclong?(
             <Marker position={[String(landing.reclat), String(landing.reclong)]} key={i} icon={landingIcon}>
             <Popup>
@@ -60,9 +82,10 @@ const Landings = () => {
           </Marker>):null)}
             
       </MapContainer>
-      <form onSubmit={getLandingsByMass} className="mapForm">
+            <form onSubmit={getLandingsByMass} className="mapForm">
               <label htmlFor="">Max mass:</label>
-              <input type="text" />
+              <input type="text" name="mass" />
+              <input type="submit" value="Do"/>
             </form>
     </>
   )

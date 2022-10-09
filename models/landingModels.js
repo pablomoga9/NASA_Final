@@ -1,8 +1,10 @@
 const landingSchema = require('../schemas/landingsSchema');
 
-const getLandingsByMassStart = async(mass)=>{
+const getLandingsByMassStart = async(massStart)=>{
     try{
-        const getByMass = await landingSchema.find({mass:{$gt:mass}},"name mass -_id");
+        
+       
+        const getByMass = await landingSchema.find({mass:{$lt:massStart}});
         return getByMass;
     }
     catch(error){
