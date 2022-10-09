@@ -1,16 +1,27 @@
-import React from "react";
+import React, { useContext } from "react";
 import axios from "axios";
 import {useForm} from 'react-hook-form';
 import { useState } from "react";
+import { userContext } from "../../../../../context/userContext";
 
 const EditCard = (props)=>{
   const neas = props.data;
   const {register,formState:{errors},handleSubmit} = useForm();
   const [openForm,setOpenForm] = useState("");
+  const {userLogged,setUserLogged} = useContext(userContext);
   const deleteNea = async()=>{
     try{
       const res = await axios.delete(`http://localhost:3000/api/astronomy/neas/delete/${neas.designation}`);
       props.remove();
+    }
+    catch(error){
+      console.log(error);
+    }
+  }
+
+  const addCart = async()=>{
+    try{
+      props.cart();
     }
     catch(error){
       console.log(error);
@@ -54,6 +65,7 @@ const EditCard = (props)=>{
     <>
       <button onClick={deleteNea}>Borrar</button>
       <button onClick={openUpdate}>Actualizar</button>
+      {userLogged===""?null:<button onClick={addCart}>Añadir al carro</button>}
       {openForm==="open"?<div>
             <form onSubmit={handleSubmit(onSubmit)}>
                <label htmlFor="">Cambia la fecha de descubrimiento:</label>

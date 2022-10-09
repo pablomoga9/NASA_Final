@@ -5,12 +5,14 @@ import ReactPaginate from 'react-paginate';
 import axios from "axios";
 import EditCard from './EditCard/EditCard';
 import {Link} from "react-router-dom";
+import {cartContext} from '../../../../context/cartContext';
 
 const Card = ()=>{
   const {data,setData} = useContext(neasContext);
   const itemsPerPage = 10;
   const [currentItems, setCurrentItems] = useState([]);
   const [pageCount, setPageCount] = useState(0);
+  const {products,setProducts} = useContext(cartContext);
   
   const [itemOffset, setItemOffset] = useState(0);
 
@@ -45,6 +47,10 @@ const Card = ()=>{
     setData(remainingNeas);
    }
   
+   const addCart = async(item)=>{
+      await setProducts([...products,item]);
+      console.log(products);
+   }
 
 
 
@@ -77,7 +83,7 @@ const Card = ()=>{
         <p>Fecha descubrimiento: {item.discovery_date}</p>
         <p>Periodo del año: {item.period_yr}</p>
         <p>Clase orbital: {item.orbit_class}</p>
-        <EditCard key={i} data={item} remove={()=>deleteNea(i)}/>
+        <EditCard key={i} data={item} remove={()=>deleteNea(i)} cart={()=>addCart(item)}/>
       </div>
     ))}
    

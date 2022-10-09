@@ -3,10 +3,12 @@ import {Link} from 'react-router-dom';
 import styled from "styled-components";
 import {userContext} from '../../../context/userContext';
 import axios from "axios";
+import {cartContext} from '../../../context/cartContext';
 
 function Nav(){
   const [clicked, setClicked] = useState(false);
   const {userLogged,setUserLogged} = useContext(userContext);
+  const {products,setProducts} = useContext(cartContext);
   const handleClick = () => {
     setClicked(!clicked)
   }
@@ -15,6 +17,7 @@ const handleLogout= async()=>{
   try{
     const res = axios.get('http://localhost:3000/api/astronomy/users/logout',{withCredentials:true})
     setUserLogged("");
+    setProducts("");
   }
   catch(error){
     console.log(error);
