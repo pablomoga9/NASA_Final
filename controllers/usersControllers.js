@@ -1,3 +1,4 @@
+require('dotenv').config();
 const user = require('../models/userModels');
 const saltRounds = 10;
 const jwt = require('jsonwebtoken');
@@ -20,6 +21,53 @@ const createUser = async(req,res)=>{
     catch(error){
         console.log(error.stack);
         res.status(400).json({"message":"el usuario no se ha creado"});
+        return "already exists"
+    }
+}
+
+
+const checkUser = async(req,res)=>{
+    try{
+        
+        res.status(200).json({msg:req.headers.cookie})
+    }
+    catch(error){
+        res.status(400).json({msg:"user not found"})
+    }
+}
+
+const loginUser = async(req,res)=>{
+    try{
+        let data = await user.getUserByEmail(req.body.email);
+        const password = data[0].password;
+        if(!data){
+            res.status(200).json({msg:"Usuario no encontrado"});
+        }
+        else{
+          
+            const match = await bcrypt.compare(req.body.password,password)
+            if(match){
+                const userForToken = {
+                    email:data[0].email,
+                    nickname:data[0].nickname,
+                    check:true
+                };
+
+                const token = jwt.sign(userForToken,process.env.SECRET_TOKEN,{
+                    expiresIn:10000
+                })
+                res.cookie("token", token, { httpOnly: true
+                }).send()
+                return token
+                // console.log(res.cookie);
+            }
+            else{
+                res.status(400).json({ msg: "Usuario o contaseña incorrecta" });
+            }
+        }
+    }
+    catch(error){
+        console.log(error);
     }
 }
 
@@ -78,5 +126,7 @@ module.exports = {
     createUser,
     getUsers,
     updateUser,
-    deleteUser
+    deleteUser,
+    loginUser,
+    checkUser
 };

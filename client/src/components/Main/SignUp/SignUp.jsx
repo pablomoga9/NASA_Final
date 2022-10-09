@@ -19,7 +19,9 @@ const SignUp = ()=>{
         neasDiscovered:[] 
       }
       const res = await axios.post('http://localhost:3000/api/astronomy/users/create',newForm);
-      navigate("/login");
+      console.log(res.data)
+      // res.data==="alreadyexists"?console.log("user exists"):navigate("/login");
+      
     }
     catch(error){
       console.log(error);
@@ -28,6 +30,7 @@ const SignUp = ()=>{
 
   return(
     <>
+      <h2>Registro</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="">Escribe un email: </label>
         <input type="text" {

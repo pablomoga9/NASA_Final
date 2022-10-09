@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import styled from "styled-components";
 import BurguerButton from '../BurguerButton/BurguerButton';
 import {userContext} from '../../../context/userContext';
+import axios from "axios";
 
 function Nav(){
   const [clicked, setClicked] = useState(false);
@@ -12,6 +13,7 @@ function Nav(){
   }
 
 function handleLogout(){
+  
   setUserLogged("");
 }
 

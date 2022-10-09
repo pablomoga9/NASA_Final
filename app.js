@@ -1,5 +1,5 @@
 const express = require('express');
-
+const cookieParser= require('cookie-parser')
 require('./utils/dbMongo.js');
 //Routes
 const landingsRouter = require('./routes/landingsRoutes.js')
@@ -14,8 +14,12 @@ const app = express();
 const port = 3000;
 
 app.use(express.json())
-app.use(cors());
-
+var corsOptions = {
+    origin: 'http://localhost:3001',
+    credentials:  true
+  }
+app.use(cors(corsOptions));
+app.use(cookieParser())
 //APIs
 app.use('/api/', landingsRouter);
 app.use('/api/', neasRouter);
