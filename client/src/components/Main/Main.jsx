@@ -7,6 +7,7 @@ import LandingsControl from "./LandingsControl/LandingsControl";
 import NeasDetail from './NeasDetail/NeasDetail';
 import Login from './Login/Login';
 import SignUp from './SignUp/SignUp';
+import Cart from "./Cart/Cart";
 
 const Main = ()=>{
   return <main>
@@ -18,6 +19,7 @@ const Main = ()=>{
       <Route element={<NeasDetail/>} path={"/neas/detail/:designation"}/>
       <Route element={<Login/>} path={"/login"}/>
       <Route element={<SignUp/>} path={"/signup"}/>
+      <Route element={<Cart/>} path={"/cart"}/>
     </Routes>
     </main>
 }

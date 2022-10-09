@@ -41,7 +41,9 @@ const handleLogout= async()=>{
           <Link onClick={handleClick} to="/login">Login</Link>
           <Link onClick={handleClick} to="/signUp">Registro</Link>
           </div>:<div>
-              <p className="nickname">{userLogged}</p><Link onClick={handleLogout}>Logout</Link>
+              <p className="nickname">{userLogged}</p>
+              <Link to="/cart">Carro{`(${products.length})`}</Link>
+              <Link onClick={handleLogout}>Logout</Link>
             </div>}
         </div>
       </NavContainer>
