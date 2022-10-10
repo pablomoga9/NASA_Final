@@ -5,6 +5,7 @@ import uuid4 from "uuid4";
 import ReactPaginate from 'react-paginate';
 import EditCard from './EditCard/EditCard';
 import {Link} from "react-router-dom";
+import { cartContext } from "../../../../context/cartContext";
 
 const LandingCard = ()=>{
   const {landingsData,setLandingsData} = useContext(landingsContext);
@@ -12,6 +13,7 @@ const LandingCard = ()=>{
  const [currentItems,setCurrentItems] = useState([]);
  const [pageCount,setPageCount] = useState(0);
  const [itemOffset,setItemOffset] = useState(0);
+ const {products,setProducts} = useContext(cartContext)
 
  useEffect(() => {
    
@@ -49,6 +51,16 @@ const handlePageClick = (event) => {
       setCurrentItems(sortMass.slice(itemOffset,endOffset));
     }
 
+
+    const deleteLanding = (i)=>{
+      const remainingLandings = landingsData.filter((item,j)=>i!==j)
+      setLandingsData(remainingLandings);
+    }
+
+    const addCart = async(item)=>{
+      await setProducts([...products,item])
+    }
+
   return(<div>
       <ReactPaginate
     breakLabel="..."
@@ -82,7 +94,7 @@ const handlePageClick = (event) => {
        <Link to={`/landings/detail/${item.id}`}><h3>{item.name}</h3></Link>
         <p>Año: {item.year}</p>
         <p>Masa: {item.mass}</p>
-        <EditCard key={i} data={item} />
+        <EditCard key={i} data={item} remove={()=>deleteLanding(i)} cart={()=>addCart(item)}/>
       </div>
     ))}
 

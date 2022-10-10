@@ -93,6 +93,7 @@ const LandingsControl = ()=>{
         <CreateLanding/>
         <LandingCard/>
       </div>
+     
     </>
   )
 }

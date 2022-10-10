@@ -76,7 +76,7 @@ const Card = ()=>{
         <button onClick={handleDescendingPeriod} className="sortPeriodDescending">🢃</button>
       </div>
      
-    </div>
+    </div><div className="neasList">
     {currentItems.map((item,i)=>(
       <div key={uuid4()} className="neasCard" >
        <Link to={`/neas/detail/${item.designation}`}><h3>{item.designation}</h3></Link>
@@ -86,7 +86,7 @@ const Card = ()=>{
         <EditCard key={i} data={item} remove={()=>deleteNea(i)} cart={()=>addCart(item)}/>
       </div>
     ))}
-   
+    </div>
     
    </div>
     

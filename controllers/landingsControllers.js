@@ -54,7 +54,7 @@ const getLandings = async(req,res)=>{
 }
 const getLandingsByClass = async(req,res)=>{
     try{
-        const getClass = await landing.getLandingsByClass(req.params.class);
+        const getClass = await landing.getLandingsByClass(req.params.id);
         res.status(200).json(getClass);
     }   
     catch(error){
@@ -86,6 +86,7 @@ const createLanding = async(req,res)=>{
 
 const updateLanding = async(req,res)=>{
     try{
+        console.log("aqui");
         const update = await landing.updateLanding(req.body);
         res.status(200).json(update);
     }

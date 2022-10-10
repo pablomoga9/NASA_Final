@@ -8,6 +8,8 @@ import NeasDetail from './NeasDetail/NeasDetail';
 import Login from './Login/Login';
 import SignUp from './SignUp/SignUp';
 import Cart from "./Cart/Cart";
+import LandingsDetail from './LandingsDetail/LandingsDetail';
+ 
 
 const Main = ()=>{
   return <main>
@@ -20,7 +22,9 @@ const Main = ()=>{
       <Route element={<Login/>} path={"/login"}/>
       <Route element={<SignUp/>} path={"/signup"}/>
       <Route element={<Cart/>} path={"/cart"}/>
+      <Route element={<LandingsDetail/>} path={"/landings/detail/:id"}/>
     </Routes>
+    <div className="bg"></div>
     </main>
 }
 

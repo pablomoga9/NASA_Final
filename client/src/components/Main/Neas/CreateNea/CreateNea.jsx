@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {useForm} from 'react-hook-form';
 import axios from "axios";
+import {neasContext} from '../../../../context/neasContext';
 function CreateNea(){
   const {register,formState:{errors},handleSubmit} = useForm();
-
+  const {data,setData} = useContext(neasContext);
 
   const onSubmit = async(form)=>{
     try{
       const res = await axios.post('http://localhost:3000/api/astronomy/neas/create',form);
+      await setData([form,...data]);
     }
     catch(error){
       console.log(error);

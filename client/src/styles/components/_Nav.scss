@@ -1,3 +1,32 @@
 .nickname{
     color: white;
 }
+
+.shopping{
+    width: 10%;
+    color: white;
+}
+.userNav{
+    display: flex;
+    flex-direction: column;
+}
+
+a{
+    text-decoration: none;
+    margin: 10px;
+    padding: 10px;
+    background: rgb(0, 106, 227);
+    color: white;
+    border-radius: 30px;
+    h2{
+        font-size: 30px;
+    }
+}
+
+.navContainer{
+    margin-top: 30px;
+    background: rgba(12, 12, 189, 0.607);
+    padding: 5px;
+    display: flex;
+}
+

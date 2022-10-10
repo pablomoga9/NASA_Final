@@ -30,11 +30,13 @@ const Neas = ()=>{
 
 
   return(
+    <>
     <div>
         <CreateNea/>
         <Card/>
-     
-    </div>
+     </div>
+    
+     </>
   )
 }
 

@@ -14,6 +14,17 @@ const createUsers = async (user)=>{
     }
 }
 
+const getCartByNickname = async(nick)=>{
+    try{
+        const getUsers = await userSchema.find({nickname:nick},"-_id");
+        return getUsers
+    }
+    catch(error){
+        console.log(error.stack);
+    }
+}
+
+
 const getAllUser = async (req,res)=>{
     try{
         const getUsers = await userSchema.find({},"-_id");
@@ -57,6 +68,16 @@ const editUser = async (body)=>{
     }
 }
 
+const updateCart = async(user)=>{
+    try{
+        console.log(user);
+        const updateUser = await userSchema.findOneAndUpdate({nickname:user.nick},{$set:{neasDiscovered:user.list}})
+    }
+    catch(error){
+        console.log(error.stack);
+    }
+}
+
 
 const deleteUser = async(email)=>{
     try{
@@ -73,5 +94,7 @@ module.exports = {
     getAllUser,
     getUserByEmail,
     editUser,
-    deleteUser
+    deleteUser,
+    getCartByNickname,
+    updateCart
 }

@@ -37,18 +37,13 @@ const Home = ()=>{
     }
   }
 
-  return <div>
+  return <div className="homeContainer">
      <div className="imageContainer">
      {data.media_type=="video"?<YoutubeEmbed embedId={data.hdurl} />:<img className="homeImage" src={data.hdurl} alt="" />}
       <button onClick={showInfo} className="imageInfo">i</button>
       <p className="imageText">{info}</p>
     </div>
-      <div className="bg"></div>
-
-      <div className="star-field"></div>
-      <div className="layer"></div>
-      <div className="layer"></div>
-      <div className="layer"></div>
+      
   </div> 
  
    

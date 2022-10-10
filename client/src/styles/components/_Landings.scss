@@ -1,4 +1,95 @@
 .mapForm{
-    width: 30%;
-    background: red;
+    width: 100%;
+    margin-top: 20px;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    .mapLabel{
+       width: 20%;
+       margin: 20px;
+       color: white;
+    }
+    .mapInput{
+        margin: 20px;
+        border-radius: 30px;
+        border: solid;
+        border-color: #ababff;
+        padding: 10px;
+        background: rgba(224, 224, 224, 0.386);
+        color: white;
+    }
+    .mapButton{
+       border: none;
+       border-radius: 30px;
+       background: rgb(0, 179, 255);
+       color: rgb(234, 212, 255);
+       padding: 10px;
+       margin-right: 20px;
+       cursor: pointer;
+       
+    }
+    .mapButton:hover{
+        background: rgb(96, 207, 255);
+    }
 }
+.mapContainer{
+    width: 90%;
+    margin: auto;
+    margin-top: 30px;
+    border: solid;
+    border-width: 3px;
+    border-color: rgba(0, 0, 164, 0.582);
+    -webkit-box-shadow: 5px 5px 21px 19px #07070D; 
+    box-shadow: 5px 5px 21px 19px #07070D;
+    border-radius: 10px;
+}
+.leaflet-control-attribution{
+    display: none;
+}
+.leaflet-control-zoom{
+    border-radius: 30px;
+   
+    .leaflet-control-zoom-out{
+        border-radius: 50px;
+        background: rgba(176, 176, 255, 0.825);
+    }
+    .leaflet-control-zoom-out:hover{
+        background: rgba(230, 230, 255, 0.825);
+    }
+    .leaflet-control-zoom-in{
+        border-radius: 50px;
+        background: rgba(176, 176, 255, 0.825);
+    }
+    .leaflet-control-zoom-in:hover{
+        background: rgba(231, 231, 255, 0.825);
+    }
+    .leaflet-top.leaflet-left{
+        border-radius: 100%;
+    }
+}
+
+.leaflet-marker-icon{
+    background: none;
+    border: none;
+}
+.leaflet-marker-icon:hover{
+    filter: brightness(1.95);
+    
+}
+
+.leaflet-popup-content-wrapper{
+    background: rgba(22, 22, 22, 0.763);
+    h3{
+        color: white;
+    }
+    p{
+        color: white;
+    }
+    .leaflet-popup-close-button{
+        span{
+            color: white;
+        }
+    }
+}
+

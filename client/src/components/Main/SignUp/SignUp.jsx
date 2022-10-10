@@ -46,6 +46,7 @@ const SignUp = ()=>{
           })}/>{errors.email?.type==='required'&& <p>El campo 'Contraseña' es requerido</p>}
         <input type="submit" value="Crear" />
       </form>
+     
     </>
   )
 }

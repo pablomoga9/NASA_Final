@@ -61,9 +61,9 @@ const getLandingsByMass = async(mass)=>{
     }
 }
 
-const getLandingsByClass = async(class1)=>{
+const getLandingsByClass = async(idLanding)=>{
     try{
-        const getByClass = await landingSchema.find({recclass:class1}, "name recclass -_id");
+        const getByClass = await landingSchema.find({id:idLanding}, "-_id");
         return getByClass;
     }
     catch(error){

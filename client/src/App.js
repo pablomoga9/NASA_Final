@@ -9,6 +9,7 @@ import {neasContext} from './context/neasContext';
 import {landingsContext} from './context/landingsContext';
 import { userContext } from './context/userContext';
 import { cartContext } from './context/cartContext';
+import {historyContext} from './context/historyContext';
 
 import '../src/styles/styles.scss';
 
@@ -19,11 +20,13 @@ const App = () =>{
   const [landingsData,setLandingsData] = useState([]);
   const [userLogged,setUserLogged] = useState("");
   const [products,setProducts] = useState([]);
+  const [history,setHistory] = useState([]);
 
   return (
     <div className="App">
       <BrowserRouter>
       <userContext.Provider value={{userLogged,setUserLogged}}>
+        <historyContext.Provider value={{history,setHistory}}>
         <cartContext.Provider value={{products,setProducts}}>
       <neasContext.Provider value={{data,setData}}>
         <landingsContext.Provider value={{landingsData,setLandingsData}}>
@@ -33,6 +36,7 @@ const App = () =>{
         </landingsContext.Provider>
         </neasContext.Provider>
         </cartContext.Provider>
+        </historyContext.Provider>
         </userContext.Provider>
       </BrowserRouter>
     </div>

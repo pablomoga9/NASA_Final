@@ -32,17 +32,17 @@ const handleLogout= async()=>{
       <div className='burguer'>
         
         </div>
-        <div className={`links ${clicked ? 'active' : ''}`}>
-          <Link onClick={handleClick} to="/">Home</Link>
-          <Link onClick={handleClick} to="/landings">Asteroides</Link>
+        <div className="navContainer">
+          <Link onClick={handleClick} to="/">Inicio</Link>
+          <Link onClick={handleClick} to="/landings">Mapa</Link>
           <Link onClick={handleClick} to="/neas">NEAs</Link>
-          <Link onClick={handleClick} to="/landings/list">Landings List</Link>
+          <Link onClick={handleClick} to="/landings/list">Landings</Link>
           {userLogged===""?<div>
           <Link onClick={handleClick} to="/login">Login</Link>
           <Link onClick={handleClick} to="/signUp">Registro</Link>
-          </div>:<div>
+          </div>:<div className="userNav">
               <p className="nickname">{userLogged}</p>
-              <Link to="/cart">Carro{`(${products.length})`}</Link>
+              <Link to="/cart"><div className="cart"><h2>🛍️</h2><p>{`(${products.length})`}</p></div></Link>
               <Link onClick={handleLogout}>Logout</Link>
             </div>}
         </div>

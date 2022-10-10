@@ -18,7 +18,25 @@ function CreateLanding(){
   return(
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="">Name:</label>
+        <label htmlFor="">Nombre:</label>
+        <input type="text" {
+          ...register('name',{
+            required:true,
+            minLength:3
+          })}/>{errors.name?.type==='required' && <p>El campo 'Nombre' es requerido</p>}
+        <label htmlFor="">Año:</label>
+        <input type="text" {
+          ...register('year',{
+            required:true,
+            minLength:3
+          })}/>{errors.year?.type==='required' && <p>El campo 'Año' es requerido</p>}
+        <label htmlFor="">Masa:</label>
+        <input type="text" {
+          ...register('mass',{
+            required:true,
+            minLength:3
+          })}/>{errors.mass?.type==='required' && <p>El campo 'Masa' es requerido</p>}
+          <input type="submit" value="Enviar"/>
       </form>
     </>
   )

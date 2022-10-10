@@ -81,6 +81,27 @@ const loginUser = async(req,res)=>{
 }
 
 
+const getCart = async(req,res)=>{
+    try{
+        const getUser = await user.getCartByNickname(req.params.user);
+        res.status(200).json(getUser);
+    }
+    catch(error){
+        res.status(400).json({msg:"nickname not found"})
+    }
+}
+
+const cartUpdate = async(req,res)=>{
+    try{
+        const updateUser = await user.updateCart({nick:req.params.user,list:req.body});
+        res.status(200).json(updateUser);
+    }
+    catch(error){
+        res.status(400).json({msg:"nickname not found"})
+    }
+}
+
+
 
 const getUsers = async(req,res)=>{
     
@@ -138,5 +159,7 @@ module.exports = {
     deleteUser,
     loginUser,
     checkUser,
-    logoutUser
+    logoutUser,
+    getCart,
+    cartUpdate
 };

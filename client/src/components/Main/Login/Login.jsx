@@ -25,7 +25,7 @@ const Login = ()=>{
       const userToken = seeUser.data.msg.substr(6,seeUser.data.msg.length);
       
       const user = await jwt(userToken);
-      setUserLogged(user.nickname);
+      await setUserLogged(user.nickname);
       navigate('/')
     }
     catch(error){
@@ -51,6 +51,7 @@ const Login = ()=>{
           })}/>{errors.email?.type==='required'&& <p>El campo 'Contraseña' es requerido</p>}
           <input type="submit" value="Login" />
       </form>
+    
     </>
   )
 }

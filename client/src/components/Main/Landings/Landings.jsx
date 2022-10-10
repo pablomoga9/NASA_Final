@@ -51,7 +51,8 @@ const Landings = () => {
 
   return (
     <>
-      <MapContainer className="map" style={{ width: '100%', height: '500px' }} center={[51.505, -0.09]} zoom={6} scrollWheelZoom={true}>
+        <div className="mapContainer">
+        <MapContainer className="map" style={{ width: '100%', height: '500px' }} center={[51.505, -0.09]} zoom={6} scrollWheelZoom={true}>
         <TileLayer
           attribution="© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>"
           url="https://api.mapbox.com/styles/v1/mogar99/cl8w4411n000j15prntrktrgw/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibW9nYXI5OSIsImEiOiJja2Z3ZDJoaGQxOXFqMzN0OHBhajdjMXBxIn0.1-1aPslRK9n1m1QAS20q3g"
@@ -82,11 +83,13 @@ const Landings = () => {
           </Marker>):null)}
             
       </MapContainer>
+        </div>
             <form onSubmit={getLandingsByMass} className="mapForm">
-              <label htmlFor="">Max mass:</label>
-              <input type="text" name="mass" />
-              <input type="submit" value="Do"/>
+              <label className="mapLabel" htmlFor="">Max mass:</label>
+              <input className="mapInput" type="text" name="mass" />
+              <input className="mapButton" type="submit" value="Buscar"/>
             </form>
+            <div className="bg"></div>
     </>
   )
 }
