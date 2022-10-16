@@ -60,7 +60,7 @@ const Cart = ()=>{
 
   return(
     <>
-      <div className="cartSpace">
+      <div data-aos="fade-left" data-aos-duration="2000" className="cartSpace">
         <h2>Productos añadidos</h2>
       <ul className="cartList">
       {products.length===0?<h3>No hay productos</h3>:products.map((item,i)=>{
@@ -78,7 +78,7 @@ const Cart = ()=>{
       </div>
     
   
-    <div className="historyContainer">
+    <div data-aos="fade-left" data-aos-duration="2000" className="historyContainer">
       <h2>Historial de compra</h2>
     {userHistory.length===0?null:<ul className="historyList">{userHistory.map((item,i)=>{
     return <li key={i}>
