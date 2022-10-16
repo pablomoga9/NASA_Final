@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
 .logoImg{
     width: 20%;
     position: relative;
@@ -7,14 +9,13 @@
     position: absolute;
     z-index: 9;
     color: rgba(168, 223, 255, 0.9);
+    font-family: 'Poppins', sans-serif;
 }
 
 .logoContainer{
     width: 100%;
     margin: 20px;
     display: flex;
+    background: none;
 }
 
-header{
-   
-}

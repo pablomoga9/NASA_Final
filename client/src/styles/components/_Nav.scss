@@ -1,15 +1,19 @@
 .nickname{
-    color: white;
+    color: rgb(190, 246, 255);
+    font-weight: bold;
+    margin: 0px 10px 0px 0px;
+    text-align: right;
 }
 
 .shopping{
     width: 10%;
     color: white;
 }
-.userNav{
-    display: flex;
-    flex-direction: column;
-}
+// .userNav{
+//     display: flex;
+//     flex-direction: row;
+//     text-align: center;
+// }
 
 a{
     text-decoration: none;
@@ -18,15 +22,54 @@ a{
     background: rgb(0, 106, 227);
     color: white;
     border-radius: 30px;
-    h2{
-        font-size: 30px;
-    }
 }
 
 .navContainer{
-    margin-top: 30px;
+    margin-top: 5px;
     background: rgba(12, 12, 189, 0.607);
     padding: 5px;
     display: flex;
 }
 
+.navBtns{
+    display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 100%;
+}
+
+.noLogged{
+    display: flex;
+    flex-direction: row;
+}
+
+.logoutBtn{
+    color: rgb(255, 0, 55);
+}
+.cartHolder{
+    width: 30%;
+}
+
+.cart{
+    background: none;
+    width: 20%;
+}
+.cartContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    h2{
+        font-size: 30px;
+        margin: 3px;
+
+    }
+    h2:hover{
+        font-size: 33px;
+        filter: brightness(1.5);
+    }
+    p{
+        margin: 1px;
+        font-weight: bold;
+    }
+}

@@ -55,7 +55,7 @@ const Card = ()=>{
 
 
   return(<div>
-    <ReactPaginate
+    <ReactPaginate className="paginationItem"
     breakLabel="..."
     nextLabel="next"
     onPageChange={handlePageClick}
@@ -78,7 +78,8 @@ const Card = ()=>{
      
     </div><div className="neasList">
     {currentItems.map((item,i)=>(
-      <div key={uuid4()} className="neasCard" >
+      <div data-aos="fade-up"
+      data-aos-duration="2000" key={uuid4()} className="neasCard" >
        <Link to={`/neas/detail/${item.designation}`}><h3>{item.designation}</h3></Link>
         <p>Fecha descubrimiento: {item.discovery_date}</p>
         <p>Periodo del año: {item.period_yr}</p>

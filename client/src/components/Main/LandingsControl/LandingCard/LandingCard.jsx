@@ -62,7 +62,7 @@ const handlePageClick = (event) => {
     }
 
   return(<div>
-      <ReactPaginate
+      <ReactPaginate className="paginationItem"
     breakLabel="..."
     nextLabel="next"
     onPageChange={handlePageClick}
@@ -88,15 +88,17 @@ const handlePageClick = (event) => {
         <button onClick={handleDescendingMass} className="sortPeriodDescending">🢃</button>
       </div>
      
-    </div>
+    </div><div className="landingList">
     {currentItems.map((item,i)=>(
-      <div key={uuid4()} className="landingCard" >
+      <div data-aos="fade-up"
+      data-aos-duration="2000" key={uuid4()} className="landingCard" >
        <Link to={`/landings/detail/${item.id}`}><h3>{item.name}</h3></Link>
         <p>Año: {item.year}</p>
         <p>Masa: {item.mass}</p>
         <EditCard key={i} data={item} remove={()=>deleteLanding(i)} cart={()=>addCart(item)}/>
       </div>
     ))}
+    </div>
 
   </div>
     

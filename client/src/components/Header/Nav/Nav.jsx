@@ -29,23 +29,22 @@ const handleLogout= async()=>{
   return (
     <>
       <NavContainer>
-      <div className='burguer'>
-        
-        </div>
+        {userLogged===""?null: <p className="nickname">{userLogged}</p>}
         <div className="navContainer">
-          <Link onClick={handleClick} to="/">Inicio</Link>
+          <div className="navBtns">
           <Link onClick={handleClick} to="/landings">Mapa</Link>
           <Link onClick={handleClick} to="/neas">NEAs</Link>
           <Link onClick={handleClick} to="/landings/list">Landings</Link>
-          {userLogged===""?<div>
+          {userLogged===""?null:<Link className="logoutBtn" onClick={handleLogout}>Logout</Link>
+            }
+          </div>
+          
+          {userLogged===""?<div className="noLogged">
           <Link onClick={handleClick} to="/login">Login</Link>
           <Link onClick={handleClick} to="/signUp">Registro</Link>
-          </div>:<div className="userNav">
-              <p className="nickname">{userLogged}</p>
-              <Link to="/cart"><div className="cart"><h2>🛍️</h2><p>{`(${products.length})`}</p></div></Link>
-              <Link onClick={handleLogout}>Logout</Link>
-            </div>}
+          </div>:null}
         </div>
+        {userLogged===""?null: <div className="cartHolder"><Link to="/cart" className="cart"><div className="cartContainer"><h2>🛍️</h2><p>{`(${products.length})`}</p></div></Link></div>}
       </NavContainer>
     </>
   )

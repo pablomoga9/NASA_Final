@@ -1,13 +1,13 @@
-.pagination{
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 5rem;
-    font-size: 1.2rem;
-    gap: 5px;
-    width: 80%;
-}
+// .pagination{
+//     list-style: none;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     margin-bottom: 5rem;
+//     font-size: 1.2rem;
+//     gap: 5px;
+//     width: 80%;
+// }
 .pagination .page-num{
     padding: 8px 15px;
     cursor: pointer;
@@ -15,8 +15,8 @@
     font-weight: 400;
 }
 
-.pagination .page-num:hover{
-    background-color: aqua;
+.page-num:hover{
+    background-color: rgb(0, 157, 255);
     color: #ffffff;
 }
 

@@ -65,11 +65,13 @@ const addCart = async()=>{
 
   return(
     <>
-    <button onClick={deleteLanding}>Borrar</button>
-      <button onClick={openUpdate}>Actualizar</button>
-      {userLogged===""?null:<button onClick={addCart}>Añadir al carro</button>}
+    <div className="editBtns">
+        <button onClick={deleteLanding}>Borrar</button>
+        <button onClick={openUpdate}>Actualizar</button>
+        {userLogged===""?null:<button onClick={addCart}>🛒</button>}
+      </div>
       {openForm==="open"?<div>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form data-aos="flip-right" className="updateForm" onSubmit={handleSubmit(onSubmit)}>
                <label htmlFor="">Cambia el año:</label>
               <input placeholder="xxxx-xx-xx" type="text" {
                 ...register('year',{
@@ -84,7 +86,7 @@ const addCart = async()=>{
                   minLength:3
                 })
               }/>
-              <input type="submit" value="Enviar"/>
+              <input className="sendCreate" type="submit" value="Enviar"/>
             </form>
         </div>:null}
     </>

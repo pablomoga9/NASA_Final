@@ -17,7 +17,7 @@ function CreateLanding(){
 
   return(
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form className="createForm" onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="">Nombre:</label>
         <input type="text" {
           ...register('name',{
@@ -36,7 +36,7 @@ function CreateLanding(){
             required:true,
             minLength:3
           })}/>{errors.mass?.type==='required' && <p>El campo 'Masa' es requerido</p>}
-          <input type="submit" value="Enviar"/>
+          <input className="sendCreate" type="submit" value="Enviar"/>
       </form>
     </>
   )

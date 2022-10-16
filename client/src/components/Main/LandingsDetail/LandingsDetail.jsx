@@ -34,11 +34,11 @@ const LandingsDetail = ()=>{
           <h4>Geolocaclización</h4>
           <p>Latitud: {detailData[0].reclat}</p>
           <p>Longitud: {detailData[0].reclong}</p>
-          <Link to={'/landings/list'}>
-            <button>Volver</button>
+          <Link className="backDetail" to={'/landings/list'}>
+            Volver
           </Link>
         </div>
-          <img src="https://img.atlasobscura.com/4XUByddG2AeijfQnvJ8VUclunQLxPvBotpiMcxRWziI/rt:fill/w:1200/el:1/q:81/sm:1/scp:1/ar:1/aHR0cHM6Ly9hdGxh/cy1kZXYuczMuYW1h/em9uYXdzLmNvbS91/cGxvYWRzL2Fzc2V0/cy8yYjhkYjU1Mjcw/YWQyOTAyYTRfR2V0/dHlJbWFnZXMtMTAx/NzgwNTMuanBn.jpg" alt="" />
+          <img className="detailImg" src="https://img.atlasobscura.com/4XUByddG2AeijfQnvJ8VUclunQLxPvBotpiMcxRWziI/rt:fill/w:1200/el:1/q:81/sm:1/scp:1/ar:1/aHR0cHM6Ly9hdGxh/cy1kZXYuczMuYW1h/em9uYXdzLmNvbS91/cGxvYWRzL2Fzc2V0/cy8yYjhkYjU1Mjcw/YWQyOTAyYTRfR2V0/dHlJbWFnZXMtMTAx/NzgwNTMuanBn.jpg" alt="" />
       </div>:<h2>Loading...</h2>}
      
     </>

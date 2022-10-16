@@ -32,11 +32,11 @@
     padding: 0;
     position: absolute;
     
-    border: solid;
-    border-width: 3px;
-    background: rgb(0,135,161);
-    background: linear-gradient(90deg, rgba(0,135,161,1) 0%, rgba(0,32,56,0.48503151260504207) 52%, rgba(1,4,61,1) 100%);
-    padding: 10px 20px 10px 20px;
+    // border: solid;
+    // border-width: 3px;
+    // background: rgb(0,135,161);
+    // background: linear-gradient(90deg, rgba(0,135,161,1) 0%, rgba(0,32,56,0.48503151260504207) 52%, rgba(1,4,61,1) 100%);
+    // padding: 10px 20px 10px 20px;
     text-align: center;
     font-weight: bold;
     color: white;
@@ -46,15 +46,16 @@
 
 .imageInfo:hover{
     width: 10%;
-    background:linear-gradient(90deg, rgb(0, 166, 200) 0%, rgba(0, 69, 122, 0.485) 52%, rgb(0, 6, 119) 100%); ;
+    // background:linear-gradient(90deg, rgb(0, 166, 200) 0%, rgba(0, 69, 122, 0.485) 52%, rgb(0, 6, 119) 100%); ;
 }
 
 .imageText{
     margin: 20px;
-    background: rgba(110, 110, 110, 0.447);
+    background: rgba(110, 110, 110, 0.082);
     padding: 20px;
     border-radius: 20px;
-    color: rgb(205, 175, 238);
+    color: rgb(190, 246, 255);
+    
 }
 
 

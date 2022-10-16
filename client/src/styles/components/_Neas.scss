@@ -1,0 +1,16 @@
+.paginationItem{
+    
+    margin-right: 40px;
+    color: red;
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    li{
+        cursor: pointer;
+        a{
+            margin: 3px;
+        }
+    }
+}

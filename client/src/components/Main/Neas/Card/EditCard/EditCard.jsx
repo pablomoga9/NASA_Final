@@ -3,12 +3,14 @@ import axios from "axios";
 import {useForm} from 'react-hook-form';
 import { useState } from "react";
 import { userContext } from "../../../../../context/userContext";
+import {neasContext} from '../../../../../context/neasContext';
 
 const EditCard = (props)=>{
   const neas = props.data;
   const {register,formState:{errors},handleSubmit} = useForm();
   const [openForm,setOpenForm] = useState("");
   const {userLogged,setUserLogged} = useContext(userContext);
+  const {data,setData} = useContext(neasContext);
   const deleteNea = async()=>{
     try{
       const res = await axios.delete(`http://localhost:3000/api/astronomy/neas/delete/${neas.designation}`);
@@ -39,6 +41,7 @@ const EditCard = (props)=>{
 
   const onSubmit = async(form)=>{
     try{
+      const newData = data;
       console.log(form.discovery_date)
       const applyForm = {
         designation:neas.designation,
@@ -54,6 +57,7 @@ const EditCard = (props)=>{
       }
       console.log(applyForm)
       const res = await axios.put('http://localhost:3000/api/astronomy/neas/update',applyForm);
+      setData(newData);
     }
     catch(error){
       console.log(error);
@@ -63,11 +67,13 @@ const EditCard = (props)=>{
   
   return(
     <>
-      <button onClick={deleteNea}>Borrar</button>
-      <button onClick={openUpdate}>Actualizar</button>
-      {userLogged===""?null:<button onClick={addCart}>Añadir al carro</button>}
+      <div className="editBtns">
+        <button onClick={deleteNea}>Borrar</button>
+        <button onClick={openUpdate}>Actualizar</button>
+        {userLogged===""?null:<button onClick={addCart}>🛒</button>}
+      </div>
       {openForm==="open"?<div>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form data-aos="flip-right" className="updateForm" onSubmit={handleSubmit(onSubmit)}>
                <label htmlFor="">Cambia la fecha de descubrimiento:</label>
               <input placeholder="xxxx-xx-xx" type="text" {
                 ...register('discovery_date',{
@@ -82,7 +88,7 @@ const EditCard = (props)=>{
                   minLength:3
                 })
               }/>
-              <input type="submit" value="Enviar"/>
+              <input className="sendCreate" type="submit" value="Enviar"/>
             </form>
         </div>:null}
     </>

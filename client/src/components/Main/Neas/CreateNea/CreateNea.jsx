@@ -19,7 +19,7 @@ function CreateNea(){
   
   return(
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form className="createForm" onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="">Designación:</label>
         <input type="text" {
           ...register('designation',{
@@ -38,7 +38,7 @@ function CreateNea(){
             required:true,
             minLength:3
           })}/>{errors.orbitClass?.type==='required' && <p>El campo 'Clase orbital' es requerido</p>}
-          <input type="submit" value="Enviar" />
+          <input className="sendCreate" type="submit" value="Enviar" />
       </form>
     </>
   )

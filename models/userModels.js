@@ -70,8 +70,11 @@ const editUser = async (body)=>{
 
 const updateCart = async(user)=>{
     try{
-        console.log(user);
-        const updateUser = await userSchema.findOneAndUpdate({nickname:user.nick},{$set:{neasDiscovered:user.list}})
+        // console.log(user);
+        const getUsers = await userSchema.find({nickname:user.nick},"neasDiscovered -_id");
+        const updateList = [user.list,...getUsers[0].neasDiscovered]
+        console.log(updateList);
+        const updateUser = await userSchema.findOneAndUpdate({nickname:user.nick},{$set:{neasDiscovered:updateList}})
     }
     catch(error){
         console.log(error.stack);

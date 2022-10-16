@@ -38,6 +38,10 @@ const Home = ()=>{
   }
 
   return <div className="homeContainer">
+     <div data-aos="fade-left"  data-aos-duration="3000" className="homeTitle">
+      <h1 data-aos="fade-left"  data-aos-duration="3000">NasaApp</h1>
+      <h2 data-aos="fade-left"  data-aos-duration="4000">Landings & NEAs</h2>
+     </div>
      <div className="imageContainer">
      {data.media_type=="video"?<YoutubeEmbed embedId={data.hdurl} />:<img className="homeImage" src={data.hdurl} alt="" />}
       <button onClick={showInfo} className="imageInfo">i</button>
