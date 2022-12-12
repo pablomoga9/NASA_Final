@@ -15,15 +15,15 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json())
 var corsOptions = {
-    origin: 'https://nasafinal-production.up.railway.app/',
+    origin: '*',
     credentials:  true
   }
 app.use(cors(corsOptions));
 app.use(cookieParser())
 //APIs
-app.use('/api/', landingsRouter);
-app.use('/api/', neasRouter);
-app.use('/api/', usersRouter);
+app.use('/api', landingsRouter);
+app.use('/api', neasRouter);
+app.use('/api', usersRouter);
 
 //Display error
 app.use(middle404);
