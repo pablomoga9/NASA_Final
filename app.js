@@ -11,11 +11,11 @@ const middle404 = require('./middlewares/error404')
 
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(express.json())
 var corsOptions = {
-    origin: 'http://localhost:3001',
+    origin: 'https://nasafinal-production.up.railway.app/',
     credentials:  true
   }
 app.use(cors(corsOptions));
