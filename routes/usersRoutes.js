@@ -10,6 +10,7 @@ usersRouter.put('/astronomy/users/cartUpdate/:user', usersControllers.cartUpdate
 usersRouter.post('/astronomy/users/login',usersControllers.loginUser);
 usersRouter.get('/astronomy/users/logout', usersControllers.logoutUser);
 usersRouter.put('/astronomy/users/edit', usersControllers.updateUser);
+usersRouter.post('/astronomy/users/checkout', usersControllers.buy);
 usersRouter.delete('/astronomy/users/delete', usersControllers.deleteUser);
 module.exports = usersRouter;
 

@@ -6,6 +6,7 @@ const bcrypt = require('bcrypt');
 
 const createUser = async(req,res)=>{
     try{
+        console.log("esta llegando")
         const hashPassword = bcrypt.hashSync(req.body.password,saltRounds);
         const newBody = {
             nickname:req.body.nickname,
@@ -80,6 +81,26 @@ const loginUser = async(req,res)=>{
     }
 }
 
+
+const buy = async(req,res)=>{
+    try{
+        const { id, amount } = req.body;
+        const payment = await stripe.paymentIntents.create({
+            amount,
+            currency: "USD",
+            description: "Gaming Keyboard",
+            payment_method: id,
+            confirm: true, //confirm the payment at the same time
+          });
+      
+          console.log(payment);
+      
+          return res.status(200).json({ message: "Successful Payment" });
+    }
+    catch(error){
+        res.status(400).json({msg:"could not finish process"})
+    }
+}
 
 const getCart = async(req,res)=>{
     try{
@@ -161,5 +182,6 @@ module.exports = {
     checkUser,
     logoutUser,
     getCart,
-    cartUpdate
+    cartUpdate,
+    buy
 };
