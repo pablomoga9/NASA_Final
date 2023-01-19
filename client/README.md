@@ -1,10 +1,10 @@
-# Getting Started with Create React App
+# NASA App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Proyecto llevado a cabo con React, MongoDB(mongoose), MUI Material, AOS, Leaflet, Stripe, SASS, Styled Components, SweetAlert, Express, JWT, Bcrypt.
 
-## Available Scripts
+## Uso
 
-In the project directory, you can run:
+La app permite obtener listados de los Neas (Asteroides cerca de la Tierra) y Landings (Meteoritos). En el caso de los Landings podemos verlos también representados en un mapa. En cada uno de los mapas existe la opción de borrar, crear y editar cada uno de los registros además de dirigirse a la vista detalle de cada uno de ellos. 
 
 ### `npm start`
 
